@@ -12,9 +12,7 @@ import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
-import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,34 +42,34 @@ public class AlarmFragment extends Fragment {
 
         TelephonyManager telephonyManager =
                 (TelephonyManager) currentActivity.getSystemService(Context.TELEPHONY_SERVICE);
-        PhoneStateListener phoneStateListener = new PhoneStateListener() {
-            @Override
-            public void onCallStateChanged(int state, String incomingNumber) {
-                switch (state) {
-                    case TelephonyManager.CALL_STATE_RINGING:
-                        Log.d(getClass().getSimpleName(), "Incoming call: "
-                                + incomingNumber);
-                        try {
-                            mediaPlayer.pause();
-                        } catch (IllegalStateException e) {
-                            Log.e(LOG_TAG, e.getMessage());
-                        }
-                        break;
-                    case TelephonyManager.CALL_STATE_IDLE:
-                        Log.d(getClass().getSimpleName(), "Call State Idle");
-                        try {
-                            mediaPlayer.start();
-                        } catch (IllegalStateException e) {
-                            Log.e(LOG_TAG, e.getMessage());
-                        }
-                        break;
-                }
-                super.onCallStateChanged(state, incomingNumber);
-            }
-        };
-
-        telephonyManager.listen(phoneStateListener,
-                PhoneStateListener.LISTEN_CALL_STATE);
+//        PhoneStateListener phoneStateListener = new PhoneStateListener() {
+//            @Override
+//            public void onCallStateChanged(int state, String incomingNumber) {
+//                switch (state) {
+//                    case TelephonyManager.CALL_STATE_RINGING:
+//                        Log.d(getClass().getSimpleName(), "Incoming call: "
+//                                + incomingNumber);
+//                        try {
+//                            mediaPlayer.pause();
+//                        } catch (IllegalStateException e) {
+//                            Log.e(LOG_TAG, e.getMessage());
+//                        }
+//                        break;
+//                    case TelephonyManager.CALL_STATE_IDLE:
+//                        Log.d(getClass().getSimpleName(), "Call State Idle");
+//                        try {
+//                            mediaPlayer.start();
+//                        } catch (IllegalStateException e) {
+//                            Log.e(LOG_TAG, e.getMessage());
+//                        }
+//                        break;
+//                }
+//                super.onCallStateChanged(state, incomingNumber);
+//            }
+//        };
+//
+//        telephonyManager.listen(phoneStateListener,
+//                PhoneStateListener.LISTEN_CALL_STATE);
 
     }
 
@@ -79,8 +77,9 @@ public class AlarmFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        inflater.inflate(R.layout.fragment_stop_alarm, container, false);
+        inflater.inflate(R.layout.fragment_stop_alarm, container, true);
         CardView button = (CardView) container.findViewById(R.id.button_stop_alarm);
+        startAlarm();
         button.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
