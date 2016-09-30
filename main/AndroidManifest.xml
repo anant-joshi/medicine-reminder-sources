@@ -17,13 +17,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".alarm.ReminderActivity">
+        <activity android:name=".alarm.ReminderActivity"/>
+        <receiver android:name=".AppBootReciever"
+            android:enabled="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
-        </activity>
+        </receiver>
+
+        <receiver
+            android:name=".alarm.AlarmBroadcastReciever"
+            android:enabled="true" />
     </application>
 
 </manifest>

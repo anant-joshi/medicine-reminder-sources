@@ -12,6 +12,7 @@ public class AlarmBroadcastReciever extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
+        Intent launchIntent = new Intent(context, ReminderActivity.class);
+        context.startActivity(launchIntent);
     }
 }

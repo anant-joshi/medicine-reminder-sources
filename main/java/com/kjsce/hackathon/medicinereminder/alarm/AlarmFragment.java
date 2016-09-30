@@ -2,7 +2,10 @@ package com.kjsce.hackathon.medicinereminder.alarm;
 
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
@@ -23,11 +26,16 @@ import android.view.WindowManager;
 
 import com.kjsce.hackathon.medicinereminder.R;
 
+import java.util.Calendar;
+
 import static android.content.Context.VIBRATOR_SERVICE;
 
 public class AlarmFragment extends Fragment {
     private static final String LOG_TAG = AlarmFragment.class.getSimpleName();
 
+    public static final int MEAL_CODE_BREAKFAST = 496;
+    public static final int MEAL_CODE_LUNCH = 422;
+    public static final int MEAL_CODE_DINNER = 392;
     private MediaPlayer mediaPlayer;
     private boolean alarmActive;
     private Vibrator vibrator;
@@ -166,6 +174,43 @@ public class AlarmFragment extends Fragment {
 
         }
         super.onDestroy();
+    }
+
+    public static int getMealCodeFromName(String mealName){
+        int mealCode = 0;
+        switch (mealName){
+            case "breakfast":{
+                mealCode = AlarmFragment.MEAL_CODE_BREAKFAST;
+            }break;
+            case "lunch":{
+                mealCode = AlarmFragment.MEAL_CODE_LUNCH;
+            }break;
+            case "dinner":{
+                mealCode = AlarmFragment.MEAL_CODE_DINNER;
+            }break;
+        }
+        return mealCode;
+    }
+
+    public static void addAlarm(Context context,int hours, int minutes, int mealCode){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hours);
+        calendar.set(Calendar.MINUTE, minutes);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmBroadcastReciever.class);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(
+                context,
+                mealCode,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
+        alarmManager.setRepeating(
+                AlarmManager.RTC_WAKEUP,
+                calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY,
+                alarmIntent
+        );
     }
 
 

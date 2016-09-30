@@ -1,6 +1,7 @@
 package com.kjsce.hackathon.medicinereminder;
 
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,12 +12,16 @@ import android.support.v4.app.DialogFragment;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
 
+import com.kjsce.hackathon.medicinereminder.alarm.AlarmFragment;
+
 import java.util.Calendar;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
     public static final String PREFS_NAME = "mealtime_preference";
     SharedPreferences preferences = null;
+    private boolean prefExists = false;
+    PendingIntent alarmIntent;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,12 +40,13 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
     @Override
     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
-        String mealName = getPreferenceFromArguments();
+        String mealName = getMealNameFromArguments();
         String mealTime = ""+hourOfDay+"-"+minute;
         preferences.edit().putString(mealName, mealTime).apply();
+        AlarmFragment.addAlarm(getContext(),hourOfDay,minute,AlarmFragment.getMealCodeFromName(mealName));
     }
 
-    private String getPreferenceFromArguments(){
+    private String getMealNameFromArguments(){
         return getArguments().getString("meal_name");
     }
 }

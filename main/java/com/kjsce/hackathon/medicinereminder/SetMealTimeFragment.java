@@ -6,7 +6,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 
 
-
 public class SetMealTimeFragment extends Fragment {
     private Bundle args;
     @Override
@@ -16,6 +15,5 @@ public class SetMealTimeFragment extends Fragment {
         fragment.setArguments(args);
         fragment.show(getFragmentManager(), "timePicker");
         super.onCreate(savedInstanceState);
-
     }
 }
