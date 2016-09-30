@@ -64,4 +64,9 @@ public class Medicine {
     public void setDaysOfWeek(boolean[] days) {
         daysOfWeek = new DaysOfWeek(days);
     }
+
+    public void setDaysOfWeek(int days) {
+        daysOfWeek = new DaysOfWeek(days);
+    }
 }
+
