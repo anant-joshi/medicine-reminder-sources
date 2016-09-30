@@ -15,9 +15,6 @@ public class Medicine {
         return daysOfWeek.getDaysOfWeek();
     }
 
-    public void setDaysOfWeek(){
-    }
-
     public int getBreakfast() {
         return breakfast;
     }
@@ -51,6 +48,6 @@ public class Medicine {
     }
 
     public void setDaysOfWeek(boolean[] days) {
-        daysOfWeek.setDaysOfWeek(days);
+        daysOfWeek = new DaysOfWeek(days);
     }
 }
