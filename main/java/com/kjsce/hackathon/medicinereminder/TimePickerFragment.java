@@ -13,10 +13,6 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-/**
- * Created by anant on 30/9/16.
- */
-
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
     public static final String PREFS_NAME = "mealtime_preference";
