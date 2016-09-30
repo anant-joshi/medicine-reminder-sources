@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -21,7 +21,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-         inflater.inflate(R.layout.fragment_add_remove_main, container, true);
+        inflater.inflate(R.layout.fragment_add_remove_main, container, true);
 
         recyclerView = (RecyclerView) container.findViewById(R.id.recycler_view);
 
@@ -33,7 +33,7 @@ public class MainFragment extends Fragment {
         prepareDepartmentData();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
-    private List<Medicine> medicinesList = new ArrayList<>();
+    private List<Medicine> medicinesList = new LinkedList<>();
     private RecyclerView recyclerView;
     private MedicineAdapter mAdapter;
 
@@ -44,15 +44,8 @@ public class MainFragment extends Fragment {
     }
 
     private void prepareDepartmentData() {
-
-        medicinesList.add(new Medicine("Metacin",1,0,1));
-        medicinesList.add(new Medicine("Anacin",1,0,1));
-        medicinesList.add(new Medicine("Metacin",0,0,1));
-        medicinesList.add(new Medicine("Metacin",0,1,1));
-        medicinesList.add(new Medicine("Metacin",1,0,1));
-        medicinesList.add(new Medicine("Metacin",0,0,1));
-        medicinesList.add(new Medicine("Metacin",1,0,0));
-        medicinesList.add(new Medicine("Metacin",1,1,1));
+        DatabaseHelper dbHelper = new DatabaseHelper(getContext());
+        medicinesList.addAll(dbHelper.getAllStats());
         mAdapter.notifyDataSetChanged();
 
     }

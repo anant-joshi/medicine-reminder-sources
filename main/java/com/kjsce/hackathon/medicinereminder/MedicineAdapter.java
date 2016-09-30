@@ -56,19 +56,34 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
         dinner = Integer.toString(medicines.getDinner());
         if(breakfast.equals("1"))
         {
-            holder.mbreakfast.setText("Breakfast");
+            holder.mbreakfast.setText("After Breakfast");
+            holder.mbreakfast.setVisibility(View.VISIBLE);
+        }
+        else if(breakfast.equals("-1"))
+        {
+            holder.mbreakfast.setText("Before Breakfast");
             holder.mbreakfast.setVisibility(View.VISIBLE);
         }
 
         if(lunch.equals("1"))
         {
-            holder.mLunch.setText("Lunch");
+            holder.mLunch.setText("After Lunch");
+            holder.mLunch.setVisibility(View.VISIBLE);
+        }
+        else if(lunch.equals("-1"))
+        {
+            holder.mLunch.setText("Before Lunch");
             holder.mLunch.setVisibility(View.VISIBLE);
         }
 
         if(dinner.equals("1"))
         {
-            holder.mDinner.setText("Dinner");
+            holder.mDinner.setText("After Dinner");
+            holder.mDinner.setVisibility(View.VISIBLE);
+        }
+        else if(dinner.equals("-1"))
+        {
+            holder.mDinner.setText("Before Dinner");
             holder.mDinner.setVisibility(View.VISIBLE);
         }
     }
