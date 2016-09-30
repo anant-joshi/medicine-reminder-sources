@@ -14,15 +14,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SharedPreferences preferences = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-//        if(findViewById(R.id.activity_main)!=null){
-//              getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.activity_main, new SetMealTimeFragment(), MEAL_TIME_FRAGMENT_TAG).commit();
-//        }
-        if(findViewById(R.id.activity_main) != null){
-            getSupportFragmentManager()
+        if(findViewById(R.id.activity_main)!=null){
+              getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.activity_main, new MainFragment()).commit();
+                    .replace(R.id.activity_main, new SetMealsFragment(), MEAL_TIME_FRAGMENT_TAG).commit();
         }
+//        if(findViewById(R.id.activity_main) != null){
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .replace(R.id.activity_main, new MainFragment()).commit();
+//        }
     }
 }

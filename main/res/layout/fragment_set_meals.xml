@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_set_meal_time"
-    tools:context="com.kjsce.hackathon.medicinereminder.SetMealTimeFragment">
+    tools:context="com.kjsce.hackathon.medicinereminder.SetMealsFragment">
     <TextView
         android:id="@+id/meal_time_prompt_text"
         android:layout_width="wrap_content"
