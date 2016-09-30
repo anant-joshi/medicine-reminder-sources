@@ -11,6 +11,20 @@ public class Medicine {
     private int lunch;
     private DaysOfWeek daysOfWeek;
 
+
+    public Medicine(){
+
+    }
+
+    public Medicine(String mMedName, int mBreakfast,int mLunch, int mDinner){
+        name = mMedName;
+        breakfast = mBreakfast;
+        lunch = mLunch;
+        dinner = mDinner;
+    }
+
+
+
     public int getDaysOfWeek(){
         return daysOfWeek.getDaysOfWeek();
     }

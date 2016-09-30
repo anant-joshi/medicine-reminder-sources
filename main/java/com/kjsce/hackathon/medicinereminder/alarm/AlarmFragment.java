@@ -93,7 +93,11 @@ public class AlarmFragment extends Fragment {
 
     }
 
-    private void stopAlarm(){}
+    private void stopAlarm(){
+        mediaPlayer.stop();
+        vibrator.cancel();
+
+    }
 
     private String getAlarmTonePath(){
         Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
@@ -134,6 +138,7 @@ public class AlarmFragment extends Fragment {
 
             } catch (Exception e) {
                 mediaPlayer.release();
+                vibrator.cancel();
                 alarmActive = false;
             }
         }
