@@ -6,20 +6,39 @@ package com.kjsce.hackathon.medicinereminder;
 
 public class DaysOfWeek {
     private int daysOfWeek;
-    private DaysOfWeek(){}
-    public static void hello(){}
+    private boolean[] daysOfWeekArray;
+
+    public DaysOfWeek(int daysOfWeek){
+        this.daysOfWeek = daysOfWeek;
+        this.daysOfWeekArray = setDaysOfWeekArray(daysOfWeek);
+
+    }
+
+    public DaysOfWeek(boolean[] daysOfWeekArray){
+        this.daysOfWeekArray = daysOfWeekArray;
+        this.daysOfWeek = setDaysOfWeek(daysOfWeekArray);
+    }
 
     public int getDaysOfWeek() {
         return daysOfWeek;
     }
 
-    public void setDaysOfWeek(int daysOfWeek) {
-        this.daysOfWeek = daysOfWeek;
+    public boolean[] getDaysOfWeekArray() {
+        return daysOfWeekArray;
     }
+
+    private boolean[] setDaysOfWeekArray(int daysOfWeek){
+        return getDaysOfWeekArray(daysOfWeek);
+    }
+
+    private int setDaysOfWeek(boolean[] daysOfWeekArray){
+        return getDaysOfWeek(daysOfWeekArray);
+    }
+
     public static boolean[] getDaysOfWeekArray(int daysOfWeek){
         boolean[] arr =  new boolean[7];
         for(int i = 6; i>=0; i--){
-            int power = (int) Math.pow(2,i);
+            int power = i<<i;
             if(daysOfWeek>=power){
                 arr[i] = true;
                 daysOfWeek -= power;
@@ -27,16 +46,11 @@ public class DaysOfWeek {
         }
         return arr;
     }
-    public void setDaysOfWeek(boolean[] daysOfWeekArray){
-        for (int i = 0; i< daysOfWeekArray.length; i++){
-            daysOfWeek+=(daysOfWeekArray[i])?Math.pow(2,i):0;
-        }
-    }
 
-    public static int getDaysOfWeek(boolean[] daysOfWeekArray){
+    private static int getDaysOfWeek(boolean[] daysOfWeekArray){
         int daysOfWeek = 0;
         for (int i = 0; i< daysOfWeekArray.length; i++){
-            daysOfWeek+=(daysOfWeekArray[i])?Math.pow(2,i):0;
+            daysOfWeek+=(daysOfWeekArray[i])? i<<i : 0;
         }
         return daysOfWeek;
     }
