@@ -51,3 +51,4 @@ public class DaysOfWeek {
         return daysOfWeek;
     }
 }
+
