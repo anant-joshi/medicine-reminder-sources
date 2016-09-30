@@ -205,10 +205,9 @@ public class AlarmFragment extends Fragment {
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
-        alarmManager.setRepeating(
+        alarmManager.setExact(
                 AlarmManager.RTC_WAKEUP,
                 calendar.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY,
                 alarmIntent
         );
     }

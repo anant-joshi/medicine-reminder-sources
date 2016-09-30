@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 import com.kjsce.hackathon.medicinereminder.alarm.AlarmFragment;
 
 
-public class AppBootReciever extends BroadcastReceiver {
+public class AppBootOrNewDayBroadcastReciever extends BroadcastReceiver {
     private SharedPreferences preferences;
     @Override
     public void onReceive(Context context, Intent intent) {

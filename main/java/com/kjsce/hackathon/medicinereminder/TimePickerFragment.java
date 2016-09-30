@@ -41,12 +41,20 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     @Override
     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
         String mealName = getMealNameFromArguments();
-        String mealTime = ""+hourOfDay+"-"+minute;
+        String mealTime = getMealTimeFromInts(hourOfDay, minute);
+        int mealCode = AlarmFragment.getMealCodeFromName(mealName);
         preferences.edit().putString(mealName, mealTime).apply();
-        AlarmFragment.addAlarm(getContext(),hourOfDay,minute,AlarmFragment.getMealCodeFromName(mealName));
+        AlarmFragment.addAlarm(getContext(),hourOfDay,minute,mealCode);
     }
 
     private String getMealNameFromArguments(){
-        return getArguments().getString("meal_name");
+        Bundle args = getArguments();
+        String retValue = args.getString("meal_time");
+        return retValue;
+    }
+    private static String getMealTimeFromInts(int hours, int minutes){
+        String hrs = ((hours<10)?"0":"")+hours;
+        String mins = ((minutes<10)?"0":"")+minutes;
+        return hrs+"-"+mins;
     }
 }

@@ -18,10 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".alarm.ReminderActivity"/>
-        <receiver android:name=".AppBootReciever"
+        <receiver android:name=".AppBootOrNewDayBroadcastReciever"
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.DATE_CHANGED"/>
             </intent-filter>
         </receiver>
 
