@@ -21,7 +21,17 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_remove_main, container, false);
+         inflater.inflate(R.layout.fragment_add_remove_main, container, true);
+
+        recyclerView = (RecyclerView) container.findViewById(R.id.recycler_view);
+
+        mAdapter = new MedicineAdapter(getActivity() ,medicinesList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+        prepareDepartmentData();
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
     private List<Medicine> medicinesList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -30,15 +40,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) getActivity().findViewById(R.id.recycler_view);
-
-        mAdapter = new MedicineAdapter(getActivity() ,medicinesList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-        prepareDepartmentData();
 
     }
 
