@@ -36,21 +36,17 @@ public class DaysOfWeek {
     }
 
     public static boolean[] getDaysOfWeekArray(int daysOfWeek){
-        boolean[] arr =  new boolean[7];
-        for(int i = 6; i>=0; i--){
-            int power = i<<i;
-            if(daysOfWeek>=power){
-                arr[i] = true;
-                daysOfWeek -= power;
-            }
+        boolean[] arr = new boolean[7];
+        for (int i = 6; i >= 0; i--) {
+            arr[i] = (daysOfWeek & (1 << i)) != 0;
         }
         return arr;
     }
 
     private static int getDaysOfWeek(boolean[] daysOfWeekArray){
         int daysOfWeek = 0;
-        for (int i = 0; i< daysOfWeekArray.length; i++){
-            daysOfWeek+=(daysOfWeekArray[i])? i<<i : 0;
+        for (int i = daysOfWeekArray.length - 1; i >=0 ; i--){
+            daysOfWeek = (daysOfWeek << 1) | (daysOfWeekArray[i] ? 1 : 0);
         }
         return daysOfWeek;
     }
