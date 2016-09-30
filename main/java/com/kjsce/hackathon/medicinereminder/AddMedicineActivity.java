@@ -5,7 +5,6 @@ import android.graphics.Point;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,7 +19,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
-import java.util.List;
+import com.kjsce.hackathon.medicinereminder.medicine.Medicine;
 
 public class AddMedicineActivity extends AppCompatActivity {
 

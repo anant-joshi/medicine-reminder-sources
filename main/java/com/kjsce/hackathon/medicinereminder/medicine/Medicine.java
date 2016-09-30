@@ -1,4 +1,6 @@
-package com.kjsce.hackathon.medicinereminder;
+package com.kjsce.hackathon.medicinereminder.medicine;
+
+import java.util.Calendar;
 
 /**
  * Created by anant on 30/9/16.
@@ -67,6 +69,26 @@ public class Medicine {
 
     public void setDaysOfWeek(int days) {
         daysOfWeek = new DaysOfWeek(days);
+    }
+    public static boolean isTakenToday(int daysOfWeek){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        int today = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+        for (int i = 6; i>=0; i--){
+            if (i == today){
+                if(daysOfWeek >= Math.pow(2, today)){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                int pow = (int )Math.pow(2,i);
+                if(daysOfWeek >= pow){
+                    daysOfWeek -= pow;
+                }
+            }
+        }
+        return false;
     }
 }
 

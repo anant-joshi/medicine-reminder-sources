@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".alarm.ReminderActivity"/>
-        <receiver android:name=".AppBootOrNewDayBroadcastReciever"
+        <receiver android:name=".alarm.AppBootOrNewDayBroadcastReciever"
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

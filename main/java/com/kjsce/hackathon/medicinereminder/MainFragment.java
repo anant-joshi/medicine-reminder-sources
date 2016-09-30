@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kjsce.hackathon.medicinereminder.medicine.Medicine;
+import com.kjsce.hackathon.medicinereminder.medicine.MedicineAdapter;
+
 import java.util.LinkedList;
 import java.util.List;
 

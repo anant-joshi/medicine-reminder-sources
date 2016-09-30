@@ -1,4 +1,4 @@
-package com.kjsce.hackathon.medicinereminder;
+package com.kjsce.hackathon.medicinereminder.alarm;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

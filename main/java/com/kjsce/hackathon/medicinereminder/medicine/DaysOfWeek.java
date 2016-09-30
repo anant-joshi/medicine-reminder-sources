@@ -1,4 +1,4 @@
-package com.kjsce.hackathon.medicinereminder;
+package com.kjsce.hackathon.medicinereminder.medicine;
 
 /**
  * Created by anant on 30/9/16.

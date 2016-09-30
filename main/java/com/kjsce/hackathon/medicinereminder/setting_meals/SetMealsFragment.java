@@ -1,4 +1,4 @@
-package com.kjsce.hackathon.medicinereminder;
+package com.kjsce.hackathon.medicinereminder.setting_meals;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.kjsce.hackathon.medicinereminder.R;
 
 
 public class SetMealsFragment extends Fragment {

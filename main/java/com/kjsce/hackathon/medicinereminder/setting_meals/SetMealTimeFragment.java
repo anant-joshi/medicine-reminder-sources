@@ -1,4 +1,4 @@
-package com.kjsce.hackathon.medicinereminder;
+package com.kjsce.hackathon.medicinereminder.setting_meals;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

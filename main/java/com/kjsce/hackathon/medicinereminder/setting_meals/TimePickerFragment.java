@@ -1,4 +1,4 @@
-package com.kjsce.hackathon.medicinereminder;
+package com.kjsce.hackathon.medicinereminder.setting_meals;
 
 import android.app.Dialog;
 import android.app.PendingIntent;
