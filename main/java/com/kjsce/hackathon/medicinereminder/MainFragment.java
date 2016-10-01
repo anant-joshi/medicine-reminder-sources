@@ -55,6 +55,13 @@ public class MainFragment extends Fragment {
     private MedicineAdapter mAdapter;
 
     @Override
+    public void onResume() {
+        prepareDepartmentData();
+        recyclerView.swapAdapter(new MedicineAdapter(getActivity(), medicinesList),true);
+        super.onResume();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -62,6 +69,9 @@ public class MainFragment extends Fragment {
 
     private void prepareDepartmentData() {
         DatabaseHelper dbHelper = new DatabaseHelper(getContext());
+        if(medicinesList.size()>0){
+            medicinesList = new ArrayList<>();
+        }
         medicinesList.addAll(dbHelper.getAllStats());
         mAdapter.notifyDataSetChanged();
     }
