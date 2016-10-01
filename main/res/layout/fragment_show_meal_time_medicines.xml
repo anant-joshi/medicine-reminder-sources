@@ -1,0 +1,30 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kjsce.hackathon.medicinereminder.alarm.ShowMealTimeMedicinesFragment">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="You Need to Take"
+           android:textSize="48sp"
+           android:layout_gravity="center_horizontal"/>
+
+       <android.support.v7.widget.RecyclerView
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:scrollbars="vertical"
+           android:layout_marginLeft="8dp"
+           android:layout_marginRight="8dp"
+           android:id="@+id/show_medicine_adapter">
+
+       </android.support.v7.widget.RecyclerView>
+
+   </LinearLayout>
+
+</FrameLayout>
