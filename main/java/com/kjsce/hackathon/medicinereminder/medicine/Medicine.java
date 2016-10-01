@@ -70,6 +70,7 @@ public class Medicine {
     public void setDaysOfWeek(int days) {
         daysOfWeek = new DaysOfWeek(days);
     }
+    
     public static boolean isTakenToday(int daysOfWeek){
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());

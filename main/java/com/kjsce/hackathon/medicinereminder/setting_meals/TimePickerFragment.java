@@ -6,6 +6,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -18,14 +19,12 @@ import java.util.Calendar;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
-    public static final String PREFS_NAME = "mealtime_preference";
-    SharedPreferences preferences = null;
-    private boolean prefExists = false;
+    SharedPreferences preferences;
     PendingIntent alarmIntent;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        preferences = getContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         super.onCreate(savedInstanceState);
     }
 
@@ -49,8 +48,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
     private String getMealNameFromArguments(){
         Bundle args = getArguments();
-        String retValue = args.getString("meal_time");
-        return retValue;
+        return args.getString("meal_time");
     }
     private static String getMealTimeFromInts(int hours, int minutes){
         String hrs = ((hours<10)?"0":"")+hours;

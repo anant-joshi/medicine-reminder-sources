@@ -2,6 +2,7 @@ package com.kjsce.hackathon.medicinereminder.setting_meals;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -13,9 +14,8 @@ import com.kjsce.hackathon.medicinereminder.R;
 
 
 public class SetMealsFragment extends Fragment {
-    public static final String PREFS_NAME = "mealtime_preference";
     public static final String FRAGMENT_NAME = "set_meal_time";
-    SharedPreferences preferences = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +24,23 @@ public class SetMealsFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_set_meals,container,true);
+
         CardView breakfastCard = (CardView) rootView.findViewById(R.id.breakfast_button_card);
         CardView lunchCard = (CardView) rootView.findViewById(R.id.lunch_button_card);
         CardView dinnerCard = (CardView) rootView.findViewById(R.id.dinner_button_card);
+
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        //HACK
+        boolean breakfast = preferences.contains("breakfast");
+        boolean lunch = preferences.contains("lunch");
+        boolean dinner = preferences.contains("dinner");
+        if(breakfast) breakfastCard.setVisibility(View.GONE);
+        if(lunch) lunchCard.setVisibility(View.GONE);
+        if(dinner) dinnerCard.setVisibility(View.GONE);
+
         breakfastCard.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
