@@ -31,6 +31,13 @@ import java.util.Calendar;
 import static android.content.Context.VIBRATOR_SERVICE;
 
 public class AlarmFragment extends Fragment {
+
+    OnButtonClickListener onButtonClickListener;
+
+    public interface OnButtonClickListener{
+        public void onButtonPressed();
+    }
+
     private static final String LOG_TAG = AlarmFragment.class.getSimpleName();
 
     public static final int MEAL_CODE_BREAKFAST = 496;
@@ -81,6 +88,11 @@ public class AlarmFragment extends Fragment {
         telephonyManager.listen(phoneStateListener,
                 PhoneStateListener.LISTEN_CALL_STATE);
 
+        try{
+            onButtonClickListener = (OnButtonClickListener) currentActivity;
+        }catch (ClassCastException e){
+            Log.e("Exception",e.getMessage());
+        }
     }
 
     @Override
@@ -95,6 +107,7 @@ public class AlarmFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         stopAlarm();
+                        onButtonClickListener.onButtonPressed();
                     }
                 }
         );
@@ -192,7 +205,13 @@ public class AlarmFragment extends Fragment {
         return mealCode;
     }
 
-    public static void addAlarm(Context context,int hours, int minutes, int mealCode){
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+    }
+
+    public static void addAlarm(Context context, int hours, int minutes, int mealCode){
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hours);

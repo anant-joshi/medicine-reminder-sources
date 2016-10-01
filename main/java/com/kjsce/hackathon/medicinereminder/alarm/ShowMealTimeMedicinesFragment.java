@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import com.kjsce.hackathon.medicinereminder.DatabaseHelper;
 import com.kjsce.hackathon.medicinereminder.R;
 import com.kjsce.hackathon.medicinereminder.medicine.Medicine;
-import com.kjsce.hackathon.medicinereminder.medicine.MedicineAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,21 +23,22 @@ public class ShowMealTimeMedicinesFragment extends Fragment {
 
     private List<Medicine> medicinesList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private MedicineAdapter mAdapter;
+    private ShowMedicinesAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        inflater.inflate(R.layout.fragment_show_meal_time_medicines, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_show_meal_time_medicines, container, true);
         recyclerView = (RecyclerView) container.findViewById(R.id.show_medicine_recycler);
 
-        mAdapter = new MedicineAdapter(getActivity() ,medicinesList);
+        mAdapter = new ShowMedicinesAdapter(getActivity() ,medicinesList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+
         prepareDepartmentData();
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
