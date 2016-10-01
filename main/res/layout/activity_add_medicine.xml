@@ -2,26 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:orientation="vertical"
     android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp">
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginStart="7dp">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="Medicine Name:"
+                android:textColor="#000"
                 android:textSize="20sp"
-                android:text="Medicine"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -31,10 +35,11 @@
             android:layout_weight="1">
 
             <EditText
+                android:id="@+id/med_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text"
-                android:id="@+id/med_name"/>
+                android:textColor="#000" />
 
         </LinearLayout>
 
@@ -42,7 +47,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -50,10 +56,10 @@
             android:layout_weight="2.0">
 
             <CheckBox
+                android:id="@+id/bf_box"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Breakfast"
-                android:id="@+id/bf_box"/>
+                android:text="Breakfast" />
 
         </LinearLayout>
 
@@ -63,11 +69,11 @@
             android:layout_weight="1">
 
             <RadioButton
+                android:id="@+id/bf_box_before"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:enabled="false"
-                android:text="Before"
-                android:id="@+id/bf_box_before"/>
+                android:text="Before" />
 
         </LinearLayout>
 
@@ -77,11 +83,11 @@
             android:layout_weight="1">
 
             <RadioButton
+                android:id="@+id/bf_box_after"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:enabled="false"
-                android:text="After"
-                android:id="@+id/bf_box_after"/>
+                android:text="After" />
 
         </LinearLayout>
 
@@ -89,7 +95,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -97,10 +104,10 @@
             android:layout_weight="2.0">
 
             <CheckBox
+                android:id="@+id/lunch_box"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Lunch"
-                android:id="@+id/lunch_box"/>
+                android:text="Lunch" />
 
         </LinearLayout>
 
@@ -110,11 +117,11 @@
             android:layout_weight="1">
 
             <RadioButton
+                android:id="@+id/lunch_box_before"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:enabled="false"
-                android:text="Before"
-                android:id="@+id/lunch_box_before"/>
+                android:text="Before" />
 
         </LinearLayout>
 
@@ -124,11 +131,11 @@
             android:layout_weight="1">
 
             <RadioButton
+                android:id="@+id/lunch_box_after"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:enabled="false"
-                android:text="After"
-                android:id="@+id/lunch_box_after"/>
+                android:text="After" />
 
         </LinearLayout>
 
@@ -136,7 +143,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -144,10 +152,10 @@
             android:layout_weight="2.0">
 
             <CheckBox
+                android:id="@+id/dinner_box"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Dinner"
-                android:id="@+id/dinner_box"/>
+                android:text="Dinner" />
 
         </LinearLayout>
 
@@ -157,11 +165,11 @@
             android:layout_weight="1">
 
             <RadioButton
+                android:id="@+id/dinner_box_before"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:enabled="false"
-                android:text="Before"
-                android:id="@+id/dinner_box_before"/>
+                android:text="Before" />
 
         </LinearLayout>
 
@@ -171,11 +179,11 @@
             android:layout_weight="1">
 
             <RadioButton
+                android:id="@+id/dinner_box_after"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:enabled="false"
-                android:text="After"
-                android:id="@+id/dinner_box_after"/>
+                android:text="After" />
 
         </LinearLayout>
 
@@ -186,67 +194,41 @@
         android:layout_height="40dp">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:id="@+id/sunday_button"
+            style="@style/DaysOfWeekButtons"
             android:layout_margin="1.5dp"
-            android:text="S"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/sunday_button"/>
+            android:text="S" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:id="@+id/monday_button"
+            style="@style/DaysOfWeekButtons"
             android:layout_margin="1.5dp"
-            android:text="M"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/monday_button"/>
+            android:text="M" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"
-            android:text="T"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/tuesday_button"/>
+            android:id="@+id/tuesday_button"
+            style="@style/DaysOfWeekButtons"
+            android:text="T" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"
-            android:text="W"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/wednesday_button"/>
+            android:id="@+id/wednesday_button"
+            style="@style/DaysOfWeekButtons"
+            android:text="W" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"
-            android:text="T"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/thursday_button"/>
+            android:id="@+id/thursday_button"
+            style="@style/DaysOfWeekButtons"
+            android:text="T" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"
-            android:text="F"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/friday_button"/>
+            android:id="@+id/friday_button"
+            style="@style/DaysOfWeekButtons"
+            android:text="F" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"
-            android:text="S"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/saturday_button"/>
+            android:id="@+id/saturday_button"
+            style="@style/DaysOfWeekButtons"
+            android:text="S" />
 
     </LinearLayout>
 

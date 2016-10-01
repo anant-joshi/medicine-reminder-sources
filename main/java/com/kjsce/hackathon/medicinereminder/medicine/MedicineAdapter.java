@@ -1,12 +1,16 @@
 package com.kjsce.hackathon.medicinereminder.medicine;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.kjsce.hackathon.medicinereminder.DatabaseHelper;
 import com.kjsce.hackathon.medicinereminder.R;
 
 import java.util.List;
@@ -14,11 +18,15 @@ import java.util.List;
 /**
  * Created by anant on 30/9/16.
  */
-public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyViewHolder> {
+public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyViewHolder> implements View.OnLongClickListener {
 
     private List<Medicine> medicinesList;
-    private Context mcontext;
+    private Context mContext;
 
+    @Override
+    public boolean onLongClick(View v) {
+        return false;
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView mMedName;
@@ -37,7 +45,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
 
     public MedicineAdapter(Context context, List<Medicine> medicinesList) {
         this.medicinesList = medicinesList;
-        this.mcontext = context;
+        this.mContext = context;
     }
 
     @Override
@@ -49,7 +57,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(MedicineAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MedicineAdapter.MyViewHolder holder, final int position) {
         Medicine medicines = medicinesList.get(position);
         holder.mMedName.setText(medicines.getName());
         String breakfast,lunch,dinner;
@@ -88,6 +96,31 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
             holder.mDinner.setText("Before Dinner");
             holder.mDinner.setVisibility(View.VISIBLE);
         }
+        
+         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new AlertDialog.Builder(mContext)
+                        .setTitle("Delete entry")
+                        .setMessage("Are you sure you want to delete this entry?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String name = String.valueOf(holder.mMedName.getText());
+                                new DatabaseHelper(mContext).removeEntry(name);
+                                medicinesList.remove(position);
+                                notifyItemChanged(position);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+                return false;
+            }
+        });
     }
 
     @Override
