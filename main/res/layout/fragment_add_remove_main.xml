@@ -14,7 +14,8 @@
         android:id="@+id/current_medicines"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:text=" Your Medicines" />
+        android:gravity="center"
+        android:text=" Your Medicines " />
 
     <android.support.v7.widget.RecyclerView
         android:layout_height="0dp"
@@ -34,6 +35,7 @@
         android:fontFamily="cursive"
         android:id="@+id/add_medicine"
         android:layout_marginBottom="16dp"
+        android:gravity="center"
         android:text=" Add more medicines " />
 
 </LinearLayout>
