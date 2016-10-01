@@ -1,6 +1,7 @@
 package com.kjsce.hackathon.medicinereminder;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,11 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.kjsce.hackathon.medicinereminder.medicine.Medicine;
 import com.kjsce.hackathon.medicinereminder.medicine.MedicineAdapter;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,7 +26,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        inflater.inflate(R.layout.fragment_add_remove_main, container, true);
+        View rootView = inflater.inflate(R.layout.fragment_add_remove_main, container, true);
 
         recyclerView = (RecyclerView) container.findViewById(R.id.recycler_view);
 
@@ -34,9 +36,21 @@ public class MainFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
         prepareDepartmentData();
+
+        TextView addView = (TextView) rootView.findViewById(R.id.add_medicine);
+        addView.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), AddMedicineActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
-    private List<Medicine> medicinesList = new LinkedList<>();
+    private List<Medicine> medicinesList = new ArrayList<>();
     private RecyclerView recyclerView;
     private MedicineAdapter mAdapter;
 
@@ -50,7 +64,6 @@ public class MainFragment extends Fragment {
         DatabaseHelper dbHelper = new DatabaseHelper(getContext());
         medicinesList.addAll(dbHelper.getAllStats());
         mAdapter.notifyDataSetChanged();
-
     }
 
 

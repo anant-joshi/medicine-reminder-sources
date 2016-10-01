@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,7 +32,7 @@
         android:textSize="50dp"
         android:textColor="#e0e0e0"
         android:fontFamily="cursive"
-        android:id="@+id/add"
+        android:id="@+id/add_medicine"
         android:layout_marginBottom="16dp"
         android:text=" Add more medicines " />
 

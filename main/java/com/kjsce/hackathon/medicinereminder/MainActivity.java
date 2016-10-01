@@ -4,16 +4,19 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-//stuff
 
 import com.kjsce.hackathon.medicinereminder.setting_meals.SetMealsFragment;
 
+//stuff
+
 public class MainActivity extends AppCompatActivity {
     private static final String MEAL_TIME_FRAGMENT_TAG = "MTFT";
+    private static final String MAIN_FRAGMENT_TAG = "MFT";
     public static final String PREFS_NAME = "mealtime_preference";
 
     @Override
@@ -25,20 +28,36 @@ public class MainActivity extends AppCompatActivity {
         breakfast = preferences.contains("breakfast");
         lunch = preferences.contains("lunch");
         dinner = preferences.contains("dinner");
+
+        final Fragment fragment;
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+        String tag;
         if(breakfast && lunch && dinner){
-            if(findViewById(R.id.activity_main) != null){
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.activity_main, new MainFragment()).commit();
-            }
+            fragment = new MainFragment();
+            tag = MAIN_FRAGMENT_TAG;
         }else{
-            if(findViewById(R.id.activity_main)!=null){
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.activity_main, new SetMealsFragment(), MEAL_TIME_FRAGMENT_TAG).commit();
-            }
+            fragment = new SetMealsFragment();
+            tag = MEAL_TIME_FRAGMENT_TAG;
+        }
+        if(findViewById(R.id.activity_main)!=null){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.activity_main, fragment, tag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack(null)
+                    .commit();
         }
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        if(getSupportFragmentManager().getBackStackEntryCount()<=1)
+//        {
+//            super.onBackPressed();
+//        }else{
+//            getSupportFragmentManager().popBackStack();
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
