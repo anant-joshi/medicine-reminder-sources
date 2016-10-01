@@ -12,6 +12,8 @@ import android.view.MenuItem;
 
 import com.kjsce.hackathon.medicinereminder.setting_meals.SetMealsFragment;
 
+import java.util.List;
+
 //stuff
 
 public class MainActivity extends AppCompatActivity {
@@ -35,29 +37,43 @@ public class MainActivity extends AppCompatActivity {
         if(breakfast && lunch && dinner){
             fragment = new MainFragment();
             tag = MAIN_FRAGMENT_TAG;
+            if(findViewById(R.id.activity_main)!=null){
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.activity_main, fragment, tag)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .addToBackStack(null)
+                        .commit();
+            }
         }else{
             fragment = new SetMealsFragment();
             tag = MEAL_TIME_FRAGMENT_TAG;
-        }
-        if(findViewById(R.id.activity_main)!=null){
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.activity_main, fragment, tag)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .addToBackStack(null)
-                    .commit();
+            if(findViewById(R.id.activity_main)!=null){
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.activity_main, fragment, tag)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .addToBackStack(null)
+                        .commit();
+            }
+
         }
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if(getSupportFragmentManager().getBackStackEntryCount()<=1)
-//        {
-//            super.onBackPressed();
-//        }else{
-//            getSupportFragmentManager().popBackStack();
-//        }
-//    }
+    @Override
+    public void onBackPressed() {
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+        Fragment fragment = fragments.get(1);
+        if(fragment != null && fragment instanceof SetMealsFragment)
+        {
+            getSupportFragmentManager().popBackStack();
+
+        }else {
+            super.onBackPressed();
+        }
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -74,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(null)
                 .commit();
+
         return true;
     }
 }

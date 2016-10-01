@@ -15,6 +15,7 @@ import com.kjsce.hackathon.medicinereminder.R;
 
 public class SetMealsFragment extends Fragment {
     public static final String FRAGMENT_NAME = "set_meal_time";
+    private View rootView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class SetMealsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_set_meals,container,true);
+        rootView = inflater.inflate(R.layout.fragment_set_meals,container,true);
 
         CardView breakfastCard = (CardView) rootView.findViewById(R.id.breakfast_button_card);
         CardView lunchCard = (CardView) rootView.findViewById(R.id.lunch_button_card);
@@ -37,9 +38,9 @@ public class SetMealsFragment extends Fragment {
         boolean breakfast = preferences.contains("breakfast");
         boolean lunch = preferences.contains("lunch");
         boolean dinner = preferences.contains("dinner");
-        if(breakfast) breakfastCard.setVisibility(View.GONE);
-        if(lunch) lunchCard.setVisibility(View.GONE);
-        if(dinner) dinnerCard.setVisibility(View.GONE);
+//        if(breakfast) breakfastCard.setVisibility(View.GONE);
+//        if(lunch) lunchCard.setVisibility(View.GONE);
+//        if(dinner) dinnerCard.setVisibility(View.GONE);
 
         breakfastCard.setOnClickListener(
                 new View.OnClickListener() {
@@ -76,6 +77,13 @@ public class SetMealsFragment extends Fragment {
 
         return super.onCreateView(inflater, container, savedInstanceState);
 
+    }
+
+
+    @Override
+    public void onDetach() {
+        rootView.setVisibility(View.GONE);
+        super.onDetach();
     }
 
     public void launchFragment(Bundle args){
