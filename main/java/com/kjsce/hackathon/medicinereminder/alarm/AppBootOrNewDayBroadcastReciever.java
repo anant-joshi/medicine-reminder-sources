@@ -28,9 +28,11 @@ public class AppBootOrNewDayBroadcastReciever extends BroadcastReceiver {
 
     }
     private void setAlarmForMeal(Context context,String mealName){
-        if (preferences == null) throw new AssertionError();
-        String mealTime = preferences.getString(mealName, "nada");
-        if( mealTime.equalsIgnoreCase("nada")) throw new AssertionError();
+        String mealTime = preferences.getString(mealName, null);
+
+        if(mealTime == null)
+            return;
+
         int hours = Integer.parseInt(mealTime.substring(0,2));
         int minutes = Integer.parseInt(mealTime.substring(3,5));
         int mealCode = AlarmFragment.getMealCodeFromName(mealName);
