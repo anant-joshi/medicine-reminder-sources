@@ -1,6 +1,7 @@
 package com.kjsce.hackathon.medicinereminder;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -69,6 +70,7 @@ public class AddMedicineActivity extends AppCompatActivity {
                 break;
             case R.id.menu_done:
                 finish();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 break;
         }
 
@@ -221,7 +223,7 @@ public class AddMedicineActivity extends AppCompatActivity {
                     v.setTag(false);
                 }
                 else{
-                    bgShape.setColor(0xFFFF4081);
+                    bgShape.setColor(0xFF4CAF50);
                     v.setTag(true);
                 }
             }
