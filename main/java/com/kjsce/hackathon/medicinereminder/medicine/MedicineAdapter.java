@@ -14,11 +14,15 @@ import java.util.List;
 /**
  * Created by anant on 30/9/16.
  */
-public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyViewHolder> {
+public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyViewHolder> implements View.OnLongClickListener {
 
     private List<Medicine> medicinesList;
     private Context mcontext;
 
+     @Override
+    public boolean onLongClick(View v) {
+        return false;
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView mMedName;
@@ -88,6 +92,28 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
             holder.mDinner.setText("Before Dinner");
             holder.mDinner.setVisibility(View.VISIBLE);
         }
+        
+         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new AlertDialog.Builder(mContext)
+                        .setTitle("Delete entry")
+                        .setMessage("Are you sure you want to delete this entry?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                               //Delete the current list item from the database and update
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+                return false;
+            }
+        });
     }
 
     @Override
