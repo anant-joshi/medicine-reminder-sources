@@ -9,7 +9,7 @@
     <CheckedTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layput_gravity="center"
+        android:layout_gravity="center"
         android:id="@+id/show_pill_name"
         android:textSize="40sp"
         android:padding="5dp"
