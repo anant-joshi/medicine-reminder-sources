@@ -12,24 +12,25 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         card_view:cardUseCompatPadding="true"
-        card_view:cardElevation="2dp"
-        card_view:cardCornerRadius="10dp">
+        card_view:cardElevation="3dp"
+
+        card_view:cardCornerRadius="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:background="#FFEBEE"
+            android:background="#eeeeee"
             android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="match_parent"
                 android:id="@+id/med_name"
-
+                android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
+                android:fontFamily="cursive"
                 android:layout_marginLeft="16dp"
-                android:layout_marginBottom="16dp"
                 android:text="Medicine Name"
-                android:textSize="32sp"/>
+                android:textStyle="bold"
+                android:textSize="48sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -39,9 +40,9 @@
                 android:fontFamily="sans-serif"
                 android:layout_marginLeft="16dp"
                 android:text="Breakfast"
+                android:textColor="#000"
                 android:visibility="gone"
-
-                android:textSize="20sp"/>
+                android:textSize="24sp"/>
 
 
             <TextView
@@ -52,9 +53,9 @@
                 android:fontFamily="sans-serif"
                 android:layout_marginLeft="16dp"
                 android:text="Lunch"
+                android:textColor="#000"
                 android:visibility="gone"
-
-                android:textSize="20sp"/>
+                android:textSize="24sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,11 +64,12 @@
                 android:fontFamily="sans-serif"
                 android:layout_below="@+id/lunch"
                 android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="#000"
                 android:visibility="gone"
 
-                android:layout_marginBottom="8dp"
                 android:text="Dinner"
-                android:textSize="20sp"/>
+                android:textSize="24sp"/>
 
 
         </RelativeLayout>
