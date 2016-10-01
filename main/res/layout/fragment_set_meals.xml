@@ -1,65 +1,176 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragment_set_meal_time"
-    tools:context="com.kjsce.hackathon.medicinereminder.setting_meals.SetMealsFragment">
-    <TextView
-        android:id="@+id/meal_time_prompt_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Please set the meal times"
-        android:textSize="50dp"/>
-    <android.support.v7.widget.CardView
-        app:cardCornerRadius="10dp"
-        android:layout_below="@id/meal_time_prompt_text"
-        android:id="@+id/breakfast_button_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:cardElevation="5dp"
-        android:layout_margin="7dp">
-        <TextView
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Breakfast"
-            android:textSize="70sp"/>
-    </android.support.v7.widget.CardView>
+    xmlns:breakfast_button_card="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/lunch_button_card"
-        app:cardCornerRadius="10dp"
-        android:layout_below="@id/breakfast_button_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:cardElevation="5dp"
-        android:layout_margin="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lunch"
-            android:layout_gravity="center_horizontal"
-            android:textSize="70sp"/>
-    </android.support.v7.widget.CardView>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView
-        android:layout_below="@id/lunch_button_card"
-        app:cardCornerRadius="10dp"
-        android:id="@+id/dinner_button_card"
+    <RelativeLayout
+        android:id="@+id/fragment_set_meal_time"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:cardElevation="5dp"
-        android:layout_margin="10dp">
+        android:background="#3e2723"
+        android:layout_height="match_parent">
+
+
         <TextView
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
+            android:id="@+id/meal_time_prompt_text"
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dinner"
-            android:textSize="70sp"/>
-    </android.support.v7.widget.CardView>
-</RelativeLayout>
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:textColor="#eeeeee"
+            android:fontFamily="cursive"
+            android:text="Set meal times"
+            android:textSize="50dp"/>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:id="@+id/breakfast_button_card"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/meal_time_prompt_text"
+            android:layout_centerHorizontal="true"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="10dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFCDD2">
+
+
+                <TextView
+                    android:id="@+id/breakfastCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="Breakfast"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="cursive"
+                    android:textColor="#424242"
+                    android:textSize="40sp" />
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_timer" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/breakfastCardView"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/breakfast" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+
+            android:id="@+id/lunch_button_card"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/breakfast_button_card"
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginTop="7dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFF9C4">
+
+
+                <TextView
+                    android:id="@+id/LunchCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="cursive"
+                    android:layout_marginBottom="5dp"
+                    android:text="Lunch"
+                    android:textColor="#424242"
+                    android:textSize="40sp" />
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_timer" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LunchCardView"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/lunch" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/dinner_button_card"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/lunch_button_card"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#C5E1A5">
+
+
+                <TextView
+                    android:id="@+id/DinnerCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="cursive"
+                    android:text="Dinner"
+                    android:textColor="#424242"
+                    android:textSize="40sp" />
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_timer" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/DinnerCardView"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/dinner" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+</ScrollView>
