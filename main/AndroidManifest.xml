@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".alarm.ReminderActivity" />
+        <activity android:name=".AddMedicineActivity"/>
 
         <receiver
             android:name=".alarm.AppBootOrNewDayBroadcastReciever"
